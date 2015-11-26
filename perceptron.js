@@ -1,9 +1,13 @@
-function Perceptron() {
-    function isWorking() {
-        return true;
+function Perceptron(threshold) {
+    function process(input, weight) {
+        if (input >= threshold) {
+            return input * weight;
+        }
+        return 0;
     }
+
     return {
-        isWorking: isWorking
+        process: process
     };
 }
 
