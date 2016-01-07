@@ -2,6 +2,8 @@ var Perceptron = require("./perceptron.js")
 describe("Perceptron", function() {
     var perceptron;
     var THRESHOLD = 0.4;
+    var ACTIVE = 1;
+    var INACTIVE = 0;
 
     describe("with one input and one output", function() {
 
@@ -10,12 +12,12 @@ describe("Perceptron", function() {
         });
 
         function expectOutput(input, weight, output) {
-            var result = perceptron.process(input, weight);
+            var result = perceptron.process([input], [weight]);
             expect(result).toEqual(output);
         }
 
-        it("should output 0 if input 0", function() {
-            expectOutput(0,0,0);
+        it("should output 0 if inactive input", function() {
+            expectOutput(INACTIVE,0,0);
         });
 
         it("should output input*weight if input is over threshold", function() {
@@ -27,6 +29,27 @@ describe("Perceptron", function() {
         it("should output 0 if input is below threshold", function() {
             var input = THRESHOLD - 0.1;
             expectOutput(input,1,0);
+        });
+    });
+
+    describe("set up for AND", function() {
+        var AND_WEIGHTS = [THRESHOLD/2, THRESHOLD/2];
+
+        function expectActiveOutput(expected, inputs) {
+            var result = perceptron.process(inputs, AND_WEIGHTS);
+            var outputActive = perceptron.isActive(result);
+            expect(outputActive).toBe(expected);
+        }
+
+        beforeEach(function() {
+            perceptron = new Perceptron(THRESHOLD);
+        });
+
+        it("should act like a AND)", function() {
+            expectActiveOutput(false,   [INACTIVE,  INACTIVE]);
+            expectActiveOutput(false,   [INACTIVE,  ACTIVE]);
+            expectActiveOutput(false,   [ACTIVE,    INACTIVE]);
+            expectActiveOutput(true,    [ACTIVE,    ACTIVE]);
         });
     });
 
