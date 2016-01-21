@@ -2,7 +2,7 @@
 <head>
 	<script>
 		/*--------  Constants ------*/
-		var PIXEL_SIZE = 50; //pixels
+		var PIXEL_SIZE = 30; //pixels
 
 		var GRID_WIDTH = 0;
 		var GRID_HEIGHT = 0;
@@ -58,7 +58,7 @@
 		}
 
 		function processClicked() {
-			processedNumbers = [];
+			processedNumbers = [1, 2 , 3];
 
 			//...
 
@@ -71,13 +71,16 @@
 				result += processedNumbers[i].toString() + ",";
 			}
 			if(result.length > 0) result = result.substring(0, result.length-1);
-			getInputElement().value = result;
+			getOutputElement().value = result;
 		}
 
 		function getInputElement(){
 			return document.getElementById("inputNumber");
 		}
 
+		function getOutputElement(){
+			return document.getElementById("outputNumber");
+		}
 
 		/*--------  Learn and process  ------*/
 		function learn(number) {
