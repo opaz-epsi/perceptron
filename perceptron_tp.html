@@ -14,11 +14,11 @@
 
 		var mousePressed = false;
 		var mousePixelIndex = -1;
+		var canvas = null;
 
 		/*--------  Initialization ------*/
 		function init() {
-
-			var canvas = document.getElementById("canvas");
+			canvas = document.getElementById("canvas");
 			GRID_WIDTH = Math.floor(canvas.width/PIXEL_SIZE);
 			GRID_HEIGHT = Math.floor(canvas.height/PIXEL_SIZE);
 
@@ -30,10 +30,10 @@
 				drawPixels();
 			});
 
-			canvas.addEventListener("mousedown", function(e) {
+			canvas.addEventListener("mousedown", function() {
 				mousePressed = true;
 			}, false);
-			canvas.addEventListener("mouseup", function(e) {
+			canvas.addEventListener("mouseup", function() {
 				mousePressed = false;
 			}, false);
 
