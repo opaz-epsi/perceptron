@@ -89,6 +89,17 @@
 
 		function process() {
 			//...
+			foreachPixel(function(x, y, pixel) {
+
+			});
+		}
+
+		function foreachPixel(f) {
+			for(var x = 0; x < GRID_WIDTH; x++) {
+				for(var y = 0; y < GRID_HEIGHT; y++) {
+				 	f(x, y, pixels[x][y]);
+				}
+			}
 		}
 		
 		/*--------  Canvas helpers  ------*/
