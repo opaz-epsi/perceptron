@@ -31,5 +31,6 @@ function Perceptron(threshold, outputCount) {
         process: process
     };
 }
-
-module.exports = Perceptron;
+if(module != undefined) {
+    module.exports = Perceptron;
+}
