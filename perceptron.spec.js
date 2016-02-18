@@ -1,4 +1,4 @@
-var Perceptron = require("./perceptron.js")
+var Perceptron = require("./perceptron.js");
 describe("Perceptron", function() {
     var perceptron;
     var THRESHOLD = 0.4;
